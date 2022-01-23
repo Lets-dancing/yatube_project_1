@@ -1,12 +1,21 @@
+from turtle import title
 from django.shortcuts import render
-
 from django.http import HttpResponse
+from django.template import context
 
 
 def index(request):
-    return HttpResponse('Главная страница')
-
+    template = 'posts/index.html'
+    title = 'Это главная страница проекта Yatube'
+    context = {
+        'title': title
+    }
+    return render(request, template, context)
 
 def group_posts(request, slug):
-    return HttpResponse(f'Для Вас мы сгруппировали посты здесь: {slug}')
-
+    template = 'posts/group_list.html'
+    title = 'Здесь будет информация о группах проекта Yatube'
+    context = {
+        'title': title
+    }
+    return render(request, template, context)
